@@ -1,0 +1,71 @@
+<div style="display:flex">
+  <h1 *ngIf="!data.addAccount; else updateAcc" mat-dialog-title>Update Account</h1>
+  <ng-template #updateAcc>
+    <h1 mat-dialog-title>Add Account</h1>
+  </ng-template>
+  <mat-icon matTooltip="{{formatField}}"
+            matTooltipPosition="right"
+  >contact_support</mat-icon>
+</div>
+<div mat-dialog-content>
+  <div [formGroup]="accountForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Firstname</mat-label>
+      <input formControlName="firstname" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="lastname" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input type="number" formControlName="age" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <input placeholder="Value is F or M" formControlName="gender" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Balance</mat-label>
+      <input type="number" formControlName="balance" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" formControlName="email" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Account number</mat-label>
+      <input type="number" formControlName="account_number" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input formControlName="city" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Employer</mat-label>
+      <input formControlName="employer" matInput #input>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input formControlName="state" matInput #input>
+    </mat-form-field>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="updateAccount()" [disabled]="accountForm.status == 'INVALID'" mat-button [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+</mat-dialog-actions>

@@ -1,0 +1,33 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Search by</mat-label>
+    <mat-select (valueChange)="customSearch($event)">
+      <mat-option value="lastname" >Last Name</mat-option>
+      <mat-option value="age" >Age</mat-option>
+      <mat-option value="balance">Balance</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div [ngSwitch]="searchBy">
+    <mat-form-field  *ngSwitchCase="'lastname'" appearance="standard">
+      <mat-label>Search by Lastname</mat-label>
+      <input [formControl]="searchControl" matInput placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <mat-form-field  *ngSwitchCase="'balance'" appearance="standard">
+      <mat-label>Search by Balance</mat-label>
+      <div style="display: flex; justify-content: space-between;">
+        <input [formControl]="searchControl" type="number" matInput placeholder="Ex. 5.5" #input>
+        <mat-icon matTooltip="{{formatField}}"
+                  matTooltipPosition="right"
+        >contact_support</mat-icon>
+      </div>
+    </mat-form-field>
+    <mat-form-field  *ngSwitchCase="'age'" appearance="standard">
+      <mat-form-field appearance="fill">
+        <mat-label>Date of birth</mat-label>
+        <input [formControl]="searchControl" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-form-field>
+  </div>
+</div>

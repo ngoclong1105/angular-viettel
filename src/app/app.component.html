@@ -1,0 +1,18 @@
+<app-search-account
+  (searchByInput)="handleSearch($event)"
+>
+
+</app-search-account>
+<app-table-account 
+  #tableAcc
+  (isLoaded)="handleLoadingData($event)" 
+  [totalRows]="totalAccount" 
+  [rows]="account" 
+  [pagingMode]="pagingMode" 
+  (removeAccounts)="removeAccounts($event)"
+  (updateAccounts)="updateAccounts($event)"
+  [isUpdatedDone]="isUpdatedDone"
+  (addAccounts)="addAccount()"
+  [dataInput]="dataInput">
+</app-table-account>
+<ngx-spinner></ngx-spinner>

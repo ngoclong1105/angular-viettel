@@ -63,7 +63,7 @@ export class TableAccountComponent implements OnInit {
 
   handleOnChangePage() {
     this.paginator.page.pipe(takeUntil(this.unsubscribeService.destroyed$)).subscribe((rs: any) => {
-      this.isLoaded.emit(rs.pageIndex)
+      this.isLoaded.emit(Number(25*rs.pageIndex))
     });
   }
 

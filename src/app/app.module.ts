@@ -37,8 +37,8 @@ import { SearchAccountComponent } from './component/search-account/search-accoun
   providers: [
     // provider used to create fake backend,
     AccountService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingService, multi: true },
     fakeBackendProvider,
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingService, multi: true }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
